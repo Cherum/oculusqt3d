@@ -9,7 +9,7 @@ find_package(Qt5 REQUIRED Core Concurrent Declarative Gui Network OpenGL Script 
 find_package(OpenGL)
 
 INCLUDE_DIRECTORIES(
-	compphys
+	multibillboard
 	qml
 	qtquick2applicationviewer
 	src
@@ -22,7 +22,7 @@ link_directories(
 	#C:/Qt/5.2.1_msvc2010_opengl/5.2.1/msvc2010_opengl/lib
 )
 
-add_subdirectory(compphys/multibillboard)
+add_subdirectory(multibillboard)
 
 set(OCSOURCE
 	src/fileio.cpp
