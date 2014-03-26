@@ -1,3 +1,6 @@
 [submodule "multibillboard"]
 	path = multibillboard
 	url = https://github.com/Cherum/multibillboard
+[submodule "OculusSDK"]
+	path = OculusSDK
+	url = https://github.com/jherico/OculusSDK.git
