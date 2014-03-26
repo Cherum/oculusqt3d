@@ -7,7 +7,7 @@
 #include <QGLVertexBundle>
 #include <QMap>
 #include <iostream>
-#include <multibillboard/src/databundle.h>
+#include <src/databundle.h>
 
 using std::cout;
 using std::endl;

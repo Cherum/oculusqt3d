@@ -2,7 +2,7 @@
 #define MDSTATEMANAGER_H
 #include <QArray>
 #include <string>
-#include <multibillboard/src/datasource.h>
+#include <src/datasource.h>
 #include <Qt3DQuick>
 #include "mdstate.h"
 
