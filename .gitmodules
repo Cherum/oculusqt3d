@@ -1,0 +1,3 @@
+[submodule "multibillboard"]
+	path = multibillboard
+	url = https://github.com/Cherum/multibillboard
