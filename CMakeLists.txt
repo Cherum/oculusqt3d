@@ -75,7 +75,6 @@ TARGET_LINK_LIBRARIES(OculusQt3D
 	
 	MULTIBILLBOARD_LIBRARY
 	
-	${COIN3D_LIBRARIES}
 	${OPENGL_LIBRARIES}
 	debug libovrd.lib
 	optimized libovr.lib
