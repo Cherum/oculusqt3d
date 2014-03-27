@@ -23,6 +23,7 @@ link_directories(
 )
 
 add_subdirectory(multibillboard)
+#add_subdirectory(OculusSDK/LibOVR)
 
 set(OCSOURCE
 	src/fileio.cpp
@@ -74,6 +75,8 @@ TARGET_LINK_LIBRARIES(OculusQt3D
 	Qt5::Quick
 	
 	MULTIBILLBOARD_LIBRARY
+	#OculusVR
+	#OVR_LIBRARIES
 	
 	${OPENGL_LIBRARIES}
 	debug libovrd.lib
