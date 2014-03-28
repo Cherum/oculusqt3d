@@ -14,16 +14,18 @@ INCLUDE_DIRECTORIES(
 	qtquick2applicationviewer
 	src
 	
-	C:/OculusSDK/LibOVR/Include
+	#C:/OculusSDK/LibOVR/Include
+	#OculusSDK/LibOVR/Include
 )
 
-link_directories(
-	C:/OculusSDK/LibOVR/Lib/Win32
-	#C:/Qt/5.2.1_msvc2010_opengl/5.2.1/msvc2010_opengl/lib
-)
+# link_directories(
+	# C:/OculusSDK/LibOVR/Lib/Win32
+# )
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/OculusSDK/CMake/Modules")
 
 add_subdirectory(multibillboard)
-#add_subdirectory(OculusSDK/LibOVR)
+add_subdirectory(OculusSDK)
 
 set(OCSOURCE
 	src/fileio.cpp
