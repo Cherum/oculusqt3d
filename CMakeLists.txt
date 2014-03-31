@@ -5,7 +5,7 @@ project(OculusQt3D)
 set(CMAKE_AUTOMOC TRUE)
 
 SET(CMAKE_PREFIX_PATH C:/Qt/5.2.1_msvc2010_opengl/5.2.1/msvc2010_opengl)	
-find_package(Qt5 REQUIRED Core Concurrent Declarative Gui Network OpenGL Script Sql Test Xml XmlPatterns Widgets 3D 3DQuick Qml Quick)
+find_package(Qt5 REQUIRED Core Gui OpenGL Script Widgets 3D 3DQuick Qml Quick)
 find_package(OpenGL)
 
 INCLUDE_DIRECTORIES(
@@ -61,9 +61,9 @@ add_executable(
 )
 
 TARGET_LINK_LIBRARIES(OculusQt3D
-	Qt5::Declarative
+	#Qt5::Declarative
 	Qt5::Script
-	Qt5::Xml
+	#Qt5::Xml
 	Qt5::OpenGL
 	Qt5::Widgets
 	Qt5::Gui

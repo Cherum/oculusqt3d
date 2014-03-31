@@ -1,7 +1,7 @@
 #ifndef MDSTATE_H
 #define MDSTATE_H
 #include <QVector3D>
-//#include <QArray>
+#include <QArray>
 #include <QColor4ub>
 #include <QVector2D>
 #include <QGLVertexBundle>
@@ -9,8 +9,8 @@
 #include <iostream>
 #include <src/databundle.h>
 
-using std::cout;
-using std::endl;
+//using std::cout;
+//using std::endl;
 class MDState : public QObject
 {
     Q_OBJECT
