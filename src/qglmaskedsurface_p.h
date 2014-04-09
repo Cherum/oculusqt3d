@@ -59,44 +59,48 @@
 
 QT_BEGIN_NAMESPACE
 
-class QGLMaskedSurfacePrivate;
-
-class QGLMaskedSurface : public QGLAbstractSurface
+namespace OculusQt3D 
 {
-public:
-    enum BufferMaskBit
-    {
-        RedMask     = 0x0001,
-        GreenMask   = 0x0002,
-        BlueMask    = 0x0004,
-        AlphaMask   = 0x0008
-    };
-    Q_DECLARE_FLAGS(BufferMask, BufferMaskBit)
+	class QGLMaskedSurfacePrivate;
 
-    QGLMaskedSurface();
-    QGLMaskedSurface
-        (QGLAbstractSurface *surface, QGLMaskedSurface::BufferMask mask);
-    ~QGLMaskedSurface();
+	class QGLMaskedSurface : public QGLAbstractSurface
+	{
+	public:
+		enum BufferMaskBit
+		{
+			RedMask     = 0x0001,
+			GreenMask   = 0x0002,
+			BlueMask    = 0x0004,
+			AlphaMask   = 0x0008
+		};
+		Q_DECLARE_FLAGS(BufferMask, BufferMaskBit)
 
-    QGLAbstractSurface *surface() const;
-    void setSurface(QGLAbstractSurface *surface);
+		QGLMaskedSurface();
+		QGLMaskedSurface
+			(QGLAbstractSurface *surface, QGLMaskedSurface::BufferMask mask);
+		~QGLMaskedSurface();
 
-    QGLMaskedSurface::BufferMask mask() const;
-    void setMask(QGLMaskedSurface::BufferMask mask);
+		QGLAbstractSurface *surface() const;
+		void setSurface(QGLAbstractSurface *surface);
 
-    bool activate(QGLAbstractSurface *prevSurface = 0);
-    void deactivate(QGLAbstractSurface *nextSurface = 0);
-    QRect viewportGL() const;
-    bool isValid() const;
+		QGLMaskedSurface::BufferMask mask() const;
+		void setMask(QGLMaskedSurface::BufferMask mask);
 
-private:
-    QScopedPointer<QGLMaskedSurfacePrivate> d_ptr;
+		bool activate(QGLAbstractSurface *prevSurface = 0);
+		void deactivate(QGLAbstractSurface *nextSurface = 0);
+		QRect viewportGL() const;
+		bool isValid() const;
 
-    Q_DECLARE_PRIVATE(QGLMaskedSurface)
-    Q_DISABLE_COPY(QGLMaskedSurface)
-};
+	private:
+		QScopedPointer<QGLMaskedSurfacePrivate> d_ptr;
 
-Q_DECLARE_OPERATORS_FOR_FLAGS(QGLMaskedSurface::BufferMask)
+		Q_DECLARE_PRIVATE(QGLMaskedSurface)
+		Q_DISABLE_COPY(QGLMaskedSurface)
+	};
+
+	Q_DECLARE_OPERATORS_FOR_FLAGS(QGLMaskedSurface::BufferMask)
+
+}
 
 QT_END_NAMESPACE
 

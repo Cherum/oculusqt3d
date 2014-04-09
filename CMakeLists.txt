@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
 project(OculusQt3D)
 
+#set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC TRUE)
 
 SET(CMAKE_PREFIX_PATH C:/Qt/5.2.1_msvc2010_opengl/5.2.1/msvc2010_opengl)	
@@ -10,6 +11,8 @@ find_package(OpenGL)
 
 INCLUDE_DIRECTORIES(
 	multibillboard
+	flymodenavigator-qt3d
+	
 	qml
 	qtquick2applicationviewer
 	src
@@ -22,6 +25,7 @@ link_directories(
 )
 
 add_subdirectory(multibillboard)
+add_subdirectory(flymodenavigator-qt3d)
 #add_subdirectory(OculusSDK/LibOVR)
 
 set(OCSOURCE
@@ -31,8 +35,6 @@ set(OCSOURCE
 	src/frameratecounter.h
 	src/main.cpp
 	src/mdstate.cpp
-	src/mdstate.h
-	src/mdstatemanager.cpp
 	src/mdstate.h
 	src/mdstatemanager.cpp
 	src/mdstatemanager.h
@@ -73,9 +75,8 @@ TARGET_LINK_LIBRARIES(OculusQt3D
 	Qt5::Qml
 	Qt5::Quick
 	
-	MULTIBILLBOARD_LIBRARY
-	#OculusVR
-	#OVR_LIBRARIES
+	MultiBillboard
+	FlyModeNavigator
 	
 	${OPENGL_LIBRARIES}
 	debug libovrd.lib

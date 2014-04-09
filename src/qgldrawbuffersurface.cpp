@@ -42,30 +42,31 @@
 #include "qgldrawbuffersurface_p.h"
 
 QT_BEGIN_NAMESPACE
-
-bool QGLDrawBufferSurface::activate(QGLAbstractSurface *prevSurface)
+namespace OculusQt3D 
 {
-    if (!m_surface->activate(prevSurface))
-        return false;
-#if defined(GL_BACK_LEFT) && defined(GL_BACK_RIGHT)
-    glDrawBuffer(m_buffer);
-#endif
-    return true;
-}
+	bool QGLDrawBufferSurface::activate(QGLAbstractSurface *prevSurface)
+	{
+		if (!m_surface->activate(prevSurface))
+			return false;
+	#if defined(GL_BACK_LEFT) && defined(GL_BACK_RIGHT)
+		glDrawBuffer(m_buffer);
+	#endif
+		return true;
+	}
 
-void QGLDrawBufferSurface::deactivate(QGLAbstractSurface *nextSurface)
-{
-    m_surface->deactivate(nextSurface);
-}
+	void QGLDrawBufferSurface::deactivate(QGLAbstractSurface *nextSurface)
+	{
+		m_surface->deactivate(nextSurface);
+	}
 
-QRect QGLDrawBufferSurface::viewportGL() const
-{
-    return m_surface->viewportGL();
-}
+	QRect QGLDrawBufferSurface::viewportGL() const
+	{
+		return m_surface->viewportGL();
+	}
 
-bool QGLDrawBufferSurface::isValid() const
-{
-    return QGLAbstractSurface::isValid();
+	bool QGLDrawBufferSurface::isValid() const
+	{
+		return QGLAbstractSurface::isValid();
+	}
 }
-
 QT_END_NAMESPACE

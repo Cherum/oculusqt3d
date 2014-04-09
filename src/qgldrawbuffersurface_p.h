@@ -59,25 +59,28 @@
 
 QT_BEGIN_NAMESPACE
 
-class QGLDrawBufferSurface : public QGLAbstractSurface
+namespace OculusQt3D 
 {
-public:
-    QGLDrawBufferSurface(QGLAbstractSurface *surface, GLenum buffer)
-        : QGLAbstractSurface(500)
-        , m_surface(surface), m_buffer(buffer) {}
-    ~QGLDrawBufferSurface() {}
+	class QGLDrawBufferSurface : public QGLAbstractSurface
+	{
+	public:
+		QGLDrawBufferSurface(QGLAbstractSurface *surface, GLenum buffer)
+			: QGLAbstractSurface(500)
+			, m_surface(surface), m_buffer(buffer) {}
+		~QGLDrawBufferSurface() {}
 
-    bool activate(QGLAbstractSurface *prevSurface);
-    void deactivate(QGLAbstractSurface *nextSurface);
-    QRect viewportGL() const;
-    bool isValid() const;
+		bool activate(QGLAbstractSurface *prevSurface);
+		void deactivate(QGLAbstractSurface *nextSurface);
+		QRect viewportGL() const;
+		bool isValid() const;
 
-private:
-    QGLAbstractSurface *m_surface;
-    GLenum m_buffer;
+	private:
+		QGLAbstractSurface *m_surface;
+		GLenum m_buffer;
 
-    Q_DISABLE_COPY(QGLDrawBufferSurface)
-};
+		Q_DISABLE_COPY(QGLDrawBufferSurface)
+	};
+}
 
 QT_END_NAMESPACE
 
