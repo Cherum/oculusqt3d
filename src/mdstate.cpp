@@ -1,7 +1,5 @@
 #include "mdstate.h"
-#include <iostream>
-using std::cout;
-using std::endl;
+
 // double color_list[7][3] = {{1,1,1},{230.0/255,230.0/255,0},{0,0,1},{1.0,1.0,1.0},{1,0,0},{9.0/255,92.0/255,0},{95.0/255,216.0/255,250.0/255}};
 MDState::MDState(QObject *parent) :
 	QObject(parent),
@@ -32,8 +30,7 @@ MDState::MDState(QObject *parent) :
 	sizeMap.insert("C",QVector2D(0.66, 0.66));
 }
 
-MDState::~MDState() {
-}
+MDState::~MDState() {}
 
 int MDState::numberOfAtoms() {
 	int sum = 0;

@@ -400,17 +400,17 @@ QGLAbstractSurface *StereoViewportPrivate::leftEyeSurface(const QRect &originalV
         if (!leftSurface)
         {
             if (renderMode == StereoViewport::BufferedRender)
-                leftSurface = new QGLDrawBufferSurface(mainSurface, GL_BACK_LEFT);
+                leftSurface = new OculusQt3D::QGLDrawBufferSurface(mainSurface, GL_BACK_LEFT);
             else
-                leftSurface = new QGLDrawBufferSurface(mainSurface, GL_FRONT_LEFT);
+                leftSurface = new OculusQt3D::QGLDrawBufferSurface(mainSurface, GL_FRONT_LEFT);
         }
         return leftSurface;
 #endif
     case StereoViewport::RedCyanAnaglyph:
         if (!leftSurface) {
-            leftSurface = new QGLMaskedSurface
+            leftSurface = new OculusQt3D::QGLMaskedSurface
                     (mainSurface,
-                     QGLMaskedSurface::RedMask | QGLMaskedSurface::AlphaMask);
+                     OculusQt3D::QGLMaskedSurface::RedMask | OculusQt3D::QGLMaskedSurface::AlphaMask);
         }
         return leftSurface;
     case StereoViewport::LeftRight:
@@ -465,7 +465,7 @@ QGLAbstractSurface *StereoViewportPrivate::rightEyeSurface(const QRect &original
     case StereoViewport::Hardware:
 #if defined(GL_BACK_LEFT) && defined(GL_BACK_RIGHT)
         if (!rightSurface) {
-            rightSurface = new QGLDrawBufferSurface
+            rightSurface = new OculusQt3D::QGLDrawBufferSurface
                     (mainSurface,
                      renderMode == StereoViewport::BufferedRender ? GL_BACK_RIGHT : GL_FRONT_RIGHT);
         }
@@ -473,9 +473,9 @@ QGLAbstractSurface *StereoViewportPrivate::rightEyeSurface(const QRect &original
 #endif
     case StereoViewport::RedCyanAnaglyph:
         if (!rightSurface) {
-            rightSurface = new QGLMaskedSurface
+            rightSurface = new OculusQt3D::QGLMaskedSurface
                     (mainSurface,
-                     QGLMaskedSurface::GreenMask | QGLMaskedSurface::BlueMask);
+                     OculusQt3D::QGLMaskedSurface::GreenMask | OculusQt3D::QGLMaskedSurface::BlueMask);
         }
         return rightSurface;
     case StereoViewport::LeftRight:

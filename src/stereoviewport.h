@@ -58,155 +58,155 @@ class PickEvent;
 
 class StereoViewport : public QQuickPaintedItem, public QQuickViewport
 {
-    Q_OBJECT
-    Q_ENUMS(RenderMode)
-    Q_ENUMS(StereoType)
-    Q_PROPERTY(QColor fillColor READ fillColor WRITE setFillColor NOTIFY viewportChanged)
-    Q_PROPERTY(RenderMode renderMode READ renderMode WRITE setRenderMode NOTIFY viewportChanged)
-    Q_PROPERTY(bool picking READ picking WRITE setPicking NOTIFY viewportChanged)
-    Q_PROPERTY(bool showPicking READ showPicking WRITE setShowPicking NOTIFY viewportChanged)
-    Q_PROPERTY(bool showSceneGraph READ showSceneGraph WRITE setShowSceneGraph NOTIFY showSceneGraphChanged)
-    Q_PROPERTY(bool navigation READ navigation WRITE setNavigation NOTIFY viewportChanged)
-    Q_PROPERTY(bool fovzoom READ fovzoom WRITE setFovzoom NOTIFY viewportChanged)
-    Q_PROPERTY(bool blending READ blending WRITE setBlending NOTIFY viewportChanged)
-    Q_PROPERTY(QGLCamera *camera READ camera WRITE setCamera)
-    Q_PROPERTY(QGLLightParameters *light READ light WRITE setLight NOTIFY viewportChanged)
-    Q_PROPERTY(QGLLightModel *lightModel READ lightModel WRITE setLightModel NOTIFY viewportChanged)
-    Q_PROPERTY(bool antialiasing READ antialiasing WRITE setAntialiasing NOTIFY antialiasingChanged)
-    Q_PROPERTY(StereoType stereoType READ stereoType WRITE setStereoType NOTIFY stereoTypeChanged)
+	Q_OBJECT
+	Q_ENUMS(RenderMode)
+	Q_ENUMS(StereoType)
+	Q_PROPERTY(QColor fillColor READ fillColor WRITE setFillColor NOTIFY viewportChanged)
+	Q_PROPERTY(RenderMode renderMode READ renderMode WRITE setRenderMode NOTIFY viewportChanged)
+	Q_PROPERTY(bool picking READ picking WRITE setPicking NOTIFY viewportChanged)
+	Q_PROPERTY(bool showPicking READ showPicking WRITE setShowPicking NOTIFY viewportChanged)
+	Q_PROPERTY(bool showSceneGraph READ showSceneGraph WRITE setShowSceneGraph NOTIFY showSceneGraphChanged)
+	Q_PROPERTY(bool navigation READ navigation WRITE setNavigation NOTIFY viewportChanged)
+	Q_PROPERTY(bool fovzoom READ fovzoom WRITE setFovzoom NOTIFY viewportChanged)
+	Q_PROPERTY(bool blending READ blending WRITE setBlending NOTIFY viewportChanged)
+	Q_PROPERTY(QGLCamera *camera READ camera WRITE setCamera)
+	Q_PROPERTY(QGLLightParameters *light READ light WRITE setLight NOTIFY viewportChanged)
+	Q_PROPERTY(QGLLightModel *lightModel READ lightModel WRITE setLightModel NOTIFY viewportChanged)
+	Q_PROPERTY(bool antialiasing READ antialiasing WRITE setAntialiasing NOTIFY antialiasingChanged)
+	Q_PROPERTY(StereoType stereoType READ stereoType WRITE setStereoType NOTIFY stereoTypeChanged)
 
 public:
-    enum RenderMode
-    {
-        UnknownRender,
-        DirectRender,
-        BufferedRender
-    };
+	enum RenderMode
+	{
+		UnknownRender,
+		DirectRender,
+		BufferedRender
+	};
 
-    enum StereoType
-    {
-        Hardware,
-        RedCyanAnaglyph,
-        LeftRight,
-        RightLeft,
-        TopBottom,
-        BottomTop,
-        StretchedLeftRight,
-        StretchedRightLeft,
-        StretchedTopBottom,
-        StretchedBottomTop
-    };
+	enum StereoType
+	{
+		Hardware,
+		RedCyanAnaglyph,
+		LeftRight,
+		RightLeft,
+		TopBottom,
+		BottomTop,
+		StretchedLeftRight,
+		StretchedRightLeft,
+		StretchedTopBottom,
+		StretchedBottomTop
+	};
 
-    StereoViewport(QQuickItem *parent = 0);
-    ~StereoViewport();
+	StereoViewport(QQuickItem *parent = 0);
+	~StereoViewport();
 
-    QColor fillColor() const;
-    void setFillColor(const QColor &);
+	QColor fillColor() const;
+	void setFillColor(const QColor &);
 
-    bool picking() const;
-    void setPicking(bool value);
+	bool picking() const;
+	void setPicking(bool value);
 
-    bool showPicking() const;
-    void setShowPicking(bool value);
+	bool showPicking() const;
+	void setShowPicking(bool value);
 
-    bool showSceneGraph() const;
-    void setShowSceneGraph(bool show);
+	bool showSceneGraph() const;
+	void setShowSceneGraph(bool show);
 
-    bool navigation() const;
-    void setNavigation(bool value);
+	bool navigation() const;
+	void setNavigation(bool value);
 
-    bool fovzoom() const;
-    void setFovzoom(bool value);
+	bool fovzoom() const;
+	void setFovzoom(bool value);
 
-    bool blending() const;
-    void setBlending(bool value);
+	bool blending() const;
+	void setBlending(bool value);
 
-    bool antialiasing() const;
-    void setAntialiasing(bool value);
+	bool antialiasing() const;
+	void setAntialiasing(bool value);
 
-    QGLCamera *camera() const;
-    void setCamera(QGLCamera *value);
+	QGLCamera *camera() const;
+	void setCamera(QGLCamera *value);
 
-    QGLLightParameters *light() const;
-    void setLight(QGLLightParameters *value);
+	QGLLightParameters *light() const;
+	void setLight(QGLLightParameters *value);
 
-    QGLLightModel *lightModel() const;
-    void setLightModel(QGLLightModel *value);
+	QGLLightModel *lightModel() const;
+	void setLightModel(QGLLightModel *value);
 
-    int registerPickableObject(QObject *obj);
-    virtual void registerEarlyDrawObject(QObject *obj, int order);
+	int registerPickableObject(QObject *obj);
+	virtual void registerEarlyDrawObject(QObject *obj, int order);
 
-    void paint(QPainter *painter);
+	void paint(QPainter *painter);
 
-    RenderMode renderMode() const;
-    void setRenderMode(RenderMode mode);
+	RenderMode renderMode() const;
+	void setRenderMode(RenderMode mode);
 
-    StereoType stereoType() const;
+	StereoType stereoType() const;
 
 Q_SIGNALS:
-    void viewportChanged();
-    void showSceneGraphChanged();
-    void antialiasingChanged();
+	void viewportChanged();
+	void showSceneGraphChanged();
+	void antialiasingChanged();
 
-    void stereoTypeChanged(StereoType arg);
+	void stereoTypeChanged(StereoType arg);
 
 public Q_SLOTS:
-    void update3d();
+	void update3d();
 
-    void setStereoType(StereoType arg);
+	void setStereoType(StereoType arg);
 
 private Q_SLOTS:
-    void cameraChanged();
-    void beforeRendering();
-    void sceneGraphInitialized();
-    void objectForPoint();
-    void canvasDeleted();
+	void cameraChanged();
+	void beforeRendering();
+	void sceneGraphInitialized();
+	void objectForPoint();
+	void canvasDeleted();
 
 protected:
-    void mousePressEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
-    void mouseDoubleClickEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
-    void hoverEnterEvent(QHoverEvent *event);
-    void hoverMoveEvent(QHoverEvent *event);
-    void hoverLeaveEvent(QHoverEvent *event);
-    void wheelEvent(QWheelEvent *event);
-    void keyPressEvent(QKeyEvent *event);
+	void mousePressEvent(QMouseEvent *event);
+	void mouseReleaseEvent(QMouseEvent *event);
+	void mouseDoubleClickEvent(QMouseEvent *event);
+	void mouseMoveEvent(QMouseEvent *event);
+	void hoverEnterEvent(QHoverEvent *event);
+	void hoverMoveEvent(QHoverEvent *event);
+	void hoverLeaveEvent(QHoverEvent *event);
+	void wheelEvent(QWheelEvent *event);
+	void keyPressEvent(QKeyEvent *event);
 
-    // from QQuickItem
-    virtual QSGNode *updatePaintNode(QSGNode *, UpdatePaintNodeData *);
-    void itemChange(QQuickItem::ItemChange change, const ItemChangeData &value);
+	// from QQuickItem
+	virtual QSGNode *updatePaintNode(QSGNode *, UpdatePaintNodeData *);
+	void itemChange(QQuickItem::ItemChange change, const ItemChangeData &value);
 
-    void geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry);
+	void geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry);
 
 private:
-    void render(QGLPainter *painter);
-    PickEvent *initiatePick(QMouseEvent *);
-    void setupPickPaint(QGLPainter *painter, const QPointF &pt);
-    bool mouseMoveOverflow(QMouseEvent *e) const;
+	void render(QGLPainter *painter);
+	PickEvent *initiatePick(QMouseEvent *);
+	void setupPickPaint(QGLPainter *painter, const QPointF &pt);
+	bool mouseMoveOverflow(QMouseEvent *e) const;
 
-    Q_INVOKABLE void processMousePress(PickEvent *event);
-    Q_INVOKABLE void processMouseRelease(PickEvent *event);
-    Q_INVOKABLE void processMouseDoubleClick(PickEvent *event);
-    Q_INVOKABLE void processMouseMove(PickEvent *event);
-    Q_INVOKABLE void processMouseHover(PickEvent *event);
+	Q_INVOKABLE void processMousePress(PickEvent *event);
+	Q_INVOKABLE void processMouseRelease(PickEvent *event);
+	Q_INVOKABLE void processMouseDoubleClick(PickEvent *event);
+	Q_INVOKABLE void processMouseMove(PickEvent *event);
+	Q_INVOKABLE void processMouseHover(PickEvent *event);
 
-    void processNavEvent(QMouseEvent *event);
+	void processNavEvent(QMouseEvent *event);
 
-    StereoViewportPrivate *d;
+	StereoViewportPrivate *d;
 
-    void earlyDraw(QGLPainter *painter);
-    void draw(QGLPainter *painter);
-    void initializeGL(QGLPainter *painter);
+	void earlyDraw(QGLPainter *painter);
+	void draw(QGLPainter *painter);
+	void initializeGL(QGLPainter *painter);
 
-    bool hoverEvent(QHoverEvent *event);
+	bool hoverEvent(QHoverEvent *event);
 
-    void wheel(float delta);
-    void pan(float deltax, float deltay);
-    void rotate(float deltax, float deltay);
-    QPointF viewDelta(float deltax, float deltay);
+	void wheel(float delta);
+	void pan(float deltax, float deltay);
+	void rotate(float deltax, float deltay);
+	QPointF viewDelta(float deltax, float deltay);
 
-    static const int FBO_SIZE;
+	static const int FBO_SIZE;
 };
 
 QT_END_NAMESPACE

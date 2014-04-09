@@ -1,9 +1,11 @@
 #ifndef MDSTATEMANAGER_H
 #define MDSTATEMANAGER_H
+
 #include <QArray>
 #include <string>
 #include <src/datasource.h>
 #include <Qt3DQuick>
+
 #include "mdstate.h"
 
 using std::ifstream;

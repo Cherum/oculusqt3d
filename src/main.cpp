@@ -6,41 +6,44 @@
 #include <OVR.h>
 #include <oculusreader.h>
 #include <oculusview.h>
-#include <mdstatemanager.h>
-#include <settings.h>
-//#include <exampledatasource.h>
+#include "mdstatemanager.h"
+#include "settings.h"
 
-//#include <mousemover.h>
 #include <QQmlContext>
 #include <QQuickView>
 #include <QQmlEngine>
 #include <QScreen>
 #include <screeninfoscreen.h>
 #include <screeninfo.h>
+#include "src\multibillboard.h"
+#include "src\libs\mousemover.h"
 
 int main(int argc, char *argv[])
 {
-    OVR::System::Init();
-    qmlRegisterType<FileIO>("FileIO", 1, 0, "FileIO");
-    qmlRegisterType<StereoViewport>("StereoViewport", 1, 0, "StereoViewport");
-    qmlRegisterType<OculusReader>("OculusReader", 1, 0, "OculusReader");
-    qmlRegisterType<FrameRateCounter>("OculusReader", 1, 0, "FrameRateCounter");
-    qmlRegisterType<MDStateManager>("MDStateManager", 1, 0, "MDStateManager");
-    qmlRegisterType<Settings>("Settings", 1, 0, "Settings");
-    qmlRegisterType<ScreenInfo>("ScreenInfo", 1, 0, "ScreenInfo");
-    qmlRegisterType<ScreenInfoScreen>("ScreenInfo", 1, 0, "ScreenInfoScreen");
+	OVR::System::Init();
+	qmlRegisterType<FileIO>("FileIO", 1, 0, "FileIO");
+	qmlRegisterType<StereoViewport>("StereoViewport", 1, 0, "StereoViewport");
+	qmlRegisterType<OculusReader>("OculusReader", 1, 0, "OculusReader");
+	qmlRegisterType<FrameRateCounter>("OculusReader", 1, 0, "FrameRateCounter");
+	qmlRegisterType<MDStateManager>("MDStateManager", 1, 0, "MDStateManager");
+	qmlRegisterType<Settings>("Settings", 1, 0, "Settings");
+	qmlRegisterType<ScreenInfo>("ScreenInfo", 1, 0, "ScreenInfo");
+	qmlRegisterType<ScreenInfoScreen>("ScreenInfo", 1, 0, "ScreenInfoScreen");
+	qmlRegisterType<MultiBillboard>("CompPhys.MultiBillboard", 1, 0, "MultiBillboard");
+	qmlRegisterType<DataSource>("CompPhys.MultiBillboard", 1, 0, "DataSource");
+	qmlRegisterType<MouseMover>("CompPhys.FlyModeNavigator", 1, 0, "MouseMover");
 
-    QGuiApplication app(argc, argv);
+	QGuiApplication app(argc, argv);
 
-    QSurfaceFormat format;
-    format.setMajorVersion(4);
-    format.setMinorVersion(3);
-    OculusView view;
-    view.setFormat(format);
+	QSurfaceFormat format;
+	format.setMajorVersion(4);
+	format.setMinorVersion(3);
+	OculusView view;
+	view.setFormat(format);
 #ifdef Q_OS_MACX
-    view.addImportPath(".");
+	view.addImportPath(".");
 #else
-    view.addImportPath("../libs");
+	view.addImportPath("../libs");
 #endif
 
 #ifdef Q_OS_LINUX
@@ -48,10 +51,10 @@ int main(int argc, char *argv[])
 #else
 //    view.engine()->addImportPath("/repos/flymodenavigator-qt3d/build-flymodenavigator-Desktop_Qt_5_2_0_clang_64bit-Release/src/libs");
 #endif
-    view.setMainQmlFile("qml/oculus/main.qml");
+	view.setMainQmlFile("../qml/oculus/main.qml");
 //    view.fullScreenAllMonitors();
-    view.show();
+	view.show();
 
-    setlocale (LC_ALL, "en_US.UTF8");
-    return app.exec();
+	setlocale (LC_ALL, "en_US.UTF8");
+	return app.exec();
 }
