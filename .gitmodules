@@ -6,4 +6,4 @@
 	url = https://github.com/jherico/OculusSDK.git
 [submodule "flymodenavigator-qt3d"]
 	path = flymodenavigator-qt3d
-	url = https://github.com/ComputationalPhysics/flymodenavigator-qt3d.git
+	url = https://github.com/Cherum/flymodenavigator-qt3d
